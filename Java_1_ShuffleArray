@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayShuffler {
+    public static void main(String[] args) {
+        // Creating an array with values (1, 2, 3, 4, 5, 6, 7)
+        Integer[] array = {1, 2, 3, 4, 5, 6, 7};
+
+        // Converting the array to an ArrayList for shuffling
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        Collections.addAll(arrayList, array);
+
+        // Shuffling the ArrayList using with inbuilt function
+        Collections.shuffle(arrayList);
+
+        // Converting the shuffled ArrayList back to an array
+        arrayList.toArray(array);
+
+        // Printing the shuffled array using for each loop
+        System.out.println("Shuffled Array: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
