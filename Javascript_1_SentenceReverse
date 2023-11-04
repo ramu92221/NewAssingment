@@ -1,0 +1,20 @@
+function reverseWords(sentence) {
+    
+    const wordsArray = sentence.split(" ");
+
+    
+    const reversedWordsArray = wordsArray.map(word => {
+        
+        return word.split("").reverse().join("");
+    });
+
+   
+    const reversedSentence = reversedWordsArray.join(" ");
+
+    return reversedSentence;
+}
+
+
+const inputSentence = "This is a sunny day";
+const reversed = reverseWords(inputSentence);
+console.log(reversed); 
