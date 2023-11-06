@@ -4,7 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Calculator</title>
-    <link rel="stylesheet" href="style1.css">
+    <style>
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    width: 300px;
+    margin: 50px auto;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#display {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    font-size: 24px;
+    text-align: right;
+    justify-content: center;
+    margin: auto;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.operator, .number {
+    width: 60px;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.operator {
+    background-color: #e9e9e9;
+}
+
+.operator:hover, .number:hover {
+    background-color: #ddd;
+}
+
+</style>
 </head>
 <body>
     <div class="container">
@@ -31,6 +81,46 @@
         </div>
     </div>
 
-    <script src="script1.js"></script>
+    <script>
+let display = document.getElementById('display');
+let previousOperand = '';
+let currentOperand = '';
+let operator = '';
+
+function appendNumber(number) {
+    currentOperand += number;
+    display.textContent = currentOperand;
+}
+
+function appendOperator(op) {
+    if (currentOperand) {
+        previousOperand = currentOperand;
+        currentOperand = '';
+        operator = op;
+    }
+}
+
+function calculate() {
+    if (currentOperand && operator) {
+        let result = eval(previousOperand + operator + currentOperand);
+        previousOperand = result;
+        currentOperand = '';
+        operator = '';
+        display.textContent = result;
+    }
+}
+function clearScreen(){
+    location.reload();
+
+}
+function deleteNumber(){
+   
+currentOperand.value=currentOperand.slice(0, - 1);
+}
+    
+
+
+
+</script>
 </body>
 </html>
