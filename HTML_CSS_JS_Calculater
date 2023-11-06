@@ -1,126 +1,133 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Calculator</title>
-    <style>
-body {
-    font-family: sans-serif;
+  <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-.container {
-    width: 300px;
-    margin: 50px auto;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-#display {
+body{
+    height: 100vh;
     width: 100%;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 10px 10px 0 0;
-    padding: 10px;
-    font-size: 24px;
-    text-align: right;
-    justify-content: center;
-    margin: auto;
-}
-
-.buttons {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+.calculator{
+    border: 1px solid #706e6e;
+    padding: 30px;
+    border-radius: 15px;
+    background: transparent;
+    box-shadow: 0px 0px 20px rgba(218, 211, 211, 0.5);
+    background-color: #d9f4d9;
+
 }
 
-.operator, .number {
-    width: 60px;
-    height: 60px;
-    background-color: #ccc;
-    border-radius: 10px;
-    text-align: center;
-    line-height: 60px;
+input{
+    
+    width: 400px;
+    border: none;
+    padding: 20px;
+    margin: 15px;
+    background: transparent;
+    box-shadow: 0px 4px 15px rgba(214, 212, 212, 0.1);
+    font-size: 50px;
+    text-align: right;
     cursor: pointer;
+    color: #171515;
 }
-
-.operator {
-    background-color: #e9e9e9;
+input::placeholder{
+    color: #252323;
 }
+button{
+    border: none;
+    height: 60px;
+    width: 60px;
+    background: transparent;
+    color: #171616;
+    font-size:larger;
+    border-radius: 50%;
+    margin: 15px;
+    cursor: pointer;
+    box-shadow: 0px -3px 10px rgba(28, 27, 19, 0.8);
 
-.operator:hover, .number:hover {
-    background-color: #ddd;
 }
-
+.btn{
+    background-color: #fa8d07;
+}
+.pointer{
+    color: #08ea08;
+}
 </style>
+    <title>Calculator</title>
 </head>
 <body>
-    <div class="container">
-        <div id="display"></div>
-        <div class="buttons">
-            <div class="operator" onclick="appendOperator('+')">+</div>
-            <div class="operator" onclick="appendOperator('-')">-</div>
-            <div class="operator" onclick="appendOperator('*')">*</div>
-            <div class="operator" onclick="appendOperator('/')">/</div>
-            <div class="operator" onclick="clearScreen()">AC</div>
-            <div class="number" onclick="appendNumber('9')">9</div>
-            <div class="number" onclick="appendNumber('8')">8</div>
-            <div class="number" onclick="appendNumber('7')">7</div>
-            <div class="operator" onclick="deleteNumber()">DEL</div>
-            <div class="number" onclick="appendNumber('6')">6</div>
-            <div class="number" onclick="appendNumber('5')">5</div>
-            <div class="number" onclick="appendNumber('4')">4</div>
-            <div class="operator" onclick="calculate()">=</div>
-            <div class="number" onclick="appendNumber('3')">3</div>
-            <div class="number" onclick="appendNumber('2')">2</div>
-            <div class="number" onclick="appendNumber('1')">1</div>
-            <div class="operator" onclick="appendOperator('.')">.</div>
-            <div class="number" onclick="appendNumber('0')">0</div>
+    <div class="calculator">
+        <input type="text" placeholder="0" id="inputBox">
+        <div>
+            <button class="pointer">AC</button>
+            <button class="pointer">DEL</button>
+            <button class="pointer">%</button>
+            <button class="pointer">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="pointer">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="pointer">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="pointer">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="btn">=</button>
         </div>
     </div>
-
     <script>
-let display = document.getElementById('display');
-let previousOperand = '';
-let currentOperand = '';
-let operator = '';
+let input =document.getElementById('inputBox');
+let button =document.querySelectorAll('button');
 
-function appendNumber(number) {
-    currentOperand += number;
-    display.textContent = currentOperand;
-}
-
-function appendOperator(op) {
-    if (currentOperand) {
-        previousOperand = currentOperand;
-        currentOperand = '';
-        operator = op;
-    }
-}
-
-function calculate() {
-    if (currentOperand && operator) {
-        let result = eval(previousOperand + operator + currentOperand);
-        previousOperand = result;
-        currentOperand = '';
-        operator = '';
-        display.textContent = result;
-    }
-}
-function clearScreen(){
-    location.reload();
-
-}
-function deleteNumber(){
-   
-currentOperand.value=currentOperand.slice(0, - 1);
-}
-    
-
-
-
+let string="";
+let arr= Array.from(button);
+arr.forEach(button=>{
+    button.addEventListener('click', (e)=>{
+        if(e.target.innerHTML == '='){
+            string=eval(string)
+            input.value=string
+        }
+        else if(e.target.innerHTML =='AC'){
+            string=""
+            input.value=string
+        }
+        else if(e.target.innerHTML =='DEL'){
+            string= string.substring(0,string.length-1)
+            input.value=string
+        }
+        else{
+            string+=e.target.innerHTML
+        input.value=string
+        }
+    })
+})
 </script>
 </body>
 </html>
