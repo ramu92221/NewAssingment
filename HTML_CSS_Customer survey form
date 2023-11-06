@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+*{
+    margin: auto;
+    padding: auto;
+   
+    
+}
+body{
+    overflow: auto;
+    justify-content: space-around;
+    background-color: aqua;
+}
+#outl{
+    
+    height:590px;
+    width: 63%;
+    margin: auto;
+    overflow: auto;
+    background-color: rgb(133, 195, 211);
+    padding: 50px;
+    box-shadow: 4px 4px 4px rgb(148, 147, 147);
+}
+#cap{
+    color: white;
+    text-shadow: 1px 1px 1px rgb(49, 49, 49);
+    background-color: rgb(133, 195, 211);
+    
+}
+#name{
+    border: 1px solid black;
+    height: 100px;
+    width: 50%;
+    float: left;
+    margin-top: 50px;
+    background-color: rgb(133, 195, 211);
+    overflow: auto;
+    border: none;
+}
+#nm{
+    background-color: rgb(133, 195, 211);
+    margin-top: 10px;
+    margin-left: 10px;
+margin-right: 5px;
+}
+#inp1{
+    background-color: white;
+    height: 30px;
+    width: 90%;
+border: none;
+
+}
+#email{
+    border: 1px solid black;
+    height: 100px;
+    width: 49%;
+    float: right;
+    margin-top: 50px;
+    background-color: rgb(133, 195, 211);
+    overflow: auto;
+    border: none;
+}
+#em{
+    background-color: rgb(133, 195, 211);
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+#inp2{
+    background-color: white;
+    height: 30px;
+    width: 90%;
+    border: none;
+
+}
+#btt{
+    height: 30px;
+    width: 10%;
+    background-color: rgb(74, 74, 255);
+    color: white;
+    border: none;
+}
+#btt:hover{
+    background-color: rgb(126, 126, 240);
+    
+
+}
+#inp1:active{
+border-color: white;
+border: none;
+}
+#inp1:hover{
+    border-color: blue;
+}
+</style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="outl">
+<h1 id="cap" align="center">Customer Survey Form</h1>
+<div id="name">
+<h3 id="nm">Name</h3>
+<input type="text" id="inp1" placeholder="Enter Your Name">
+</div>
+<div id="email">
+    <h3 id="em">Email</h3>
+    <input type="text" id="inp2" placeholder="Enter Your Email">
+</div>
+<h4 id="t1">Is this first time your using our products & service?</h4><br>
+<input type="radio" value="Yes" name="r1">&nbsp;Yes &nbsp;<input type="radio" name="r1" value="No">&nbsp;No<br><br>
+<h4>Would you suggestion to your friend and colleague?</h4><br>
+<input type="radio" value="Yes" name="r2">&nbsp;Yes &nbsp;<input type="radio" name="r2" value="No">&nbsp;No<br><br>
+<h4>How satisfied are you with our company overall </h4><br>
+<input type="radio" value="satisfied" name="r3">&nbsp;Satisfied &nbsp;<input type="radio" name="r3" value="undicided">&nbsp;Undicided&nbsp;&nbsp;<input type="radio" name="r3" value="Unsatisfied">&nbsp;Unsatisfied<br><br>
+   <h4>Do you have suggestion to improve our service?</h4><br><br>
+  <textarea name="" id="" cols="30" rows="5"></textarea><br><br>
+  <button id="btt">Submit</button>
+ 
+</div>
+</body>
+</html>
